@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {#    <link rel="icon" href="../../favicon.ico">#}
+    <title>登录</title>
+    <link href="{% static "bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "signin.css" %}" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="{% static "html5shiv.min.js" %}"></script>
+      <script src="{% static "respond.min.js" %}"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container">
+    <form class="form-horizontal" method="post" action=".">
+        {% csrf_token %}
+        <h2 class="col-sm-12">登录新技术新业务平台</h2>
+        <div class="form-group">
+            <label for="username" class="col-sm-3 control-label">用户名</label>
+            <div class="col-sm-9">
+                <input type="text" id="username" name="username" class="form-control" placeholder="用户名" required
+                       autofocus>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-sm-3 control-label">密码</label>
+            <div class="col-sm-9">
+                <input type="password" id="password" name="password" class="form-control" placeholder="密码" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="authCode" class="col-sm-3 control-label">验证码</label>
+            <div class="col-sm-5">
+                <input type="text" id="authCode" name="auth_code" class="form-control" placeholder="验证码" required>
+            </div>
+            <div class="col-sm-4">
+                <img src="{% url 'base:auth_code' %}" alt="验证码"
+                     style="cursor:pointer;" title="看不清可单击图片刷新"
+                     onclick="this.src='{% url 'base:auth_code' %}?d='+Math.random();"/>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-3 col-sm-9">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+            </div>
+        </div>
+    </form>
+</div>
+<!-- /container -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="{% static "ie10-viewport-bug-workaround.js" %}"></script>
+</body>
+</html>

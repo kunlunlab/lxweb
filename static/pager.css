@@ -1,0 +1,22 @@
+.page-nav li:hover {
+    background-color: #f4f4f4;
+}
+
+.page-nav {
+    margin: 10px 50px;
+}
+
+.page-nav a, .page-nav span {
+    color: #17B2F1;
+    padding: 5px
+}
+
+.page-nav a:hover {
+    color: #fff;
+    background-color: #3377AA;
+}
+
+.active {
+    color: #fff;
+    background-color: #eee;
+}

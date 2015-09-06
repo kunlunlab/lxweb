@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<!-- saved from url=(0048)http://v3.bootcss.com/examples/navbar-fixed-top/ -->
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="http://v3.bootcss.com/favicon.ico">
+
+    <title>Fixed Top Navbar Example for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/navbar-fixed-top.css" rel="stylesheet">
+
+
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">BBS</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="{% url 'bbs:bbs_list' 1  %}">全部</a></li>
+            <li><a href="#">板块1</a></li>
+            <li><a href="{% url 'base:home' %}">回到首页</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+                    {% if user.is_authenticated %}
+                        {{ user.username }}
+                    {% else %}
+                        登录
+                    {% endif %}
+                  <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="/logout/">退出</a></li>
+
+                <li role="separator" class="divider"></li>
+
+              </ul>
+            </li>
+          </ul>
+
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+      {% block page-content %}
+
+      <div class="jumbotron">
+            {% for bbs in bbs_list %}
+                <a href = "/bbs/detail/{{bbs.id}}/">{{ bbs.title }}</a>
+                <br>
+                {{ bbs.summary }}
+
+                {{ bbs.view_count }}
+                {{ bbs.author }}
+                <hr>
+            {% endfor %}
+      </div>
+      {% endblock %}
+    </div> <!-- /container -->
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/jquery.min.js"></script>
+    <script src="/static/bootstrap.min.js"></script>
+
+
+</body><iframe allowtransparency="true" frameborder="0" id="abs-top-frame"  style="position: fixed !important; z-index: 4294967295 !important; overflow: hidden !important; top: 0px !important; left: 0px !important; right: 0px !important; width: 138px !important; height: 13px !important; max-height: none !important; min-height: 0px !important; margin: 0px auto !important; padding: 0px !important; border: 0px !important; display: block !important; background-color: transparent !important;"></iframe></html>
